@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import SearchResult from "./components/SearchResult";
+import { Link, Route, useLocation } from "wouter";
+
+const POPULAR_GIFS = ["diego", "ecuador", "rick", "morty"];
 
 function App() {
+  const [keyword, setKeyword] = useState("");
+
+  const [path, pushLocation] = useLocation();
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    pushLocation(`/gif/${keyword}`);
+  };
+
+  const handleChange = (evt) => {
+    setKeyword(evt.target.value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section className="App-content">
+        <h1>hola</h1>
+        <form onSubmit={handleSubmit}>
+          <input onChange={handleChange} type="text" value={keyword} />
+        </form>
+        <ul>
+          {POPULAR_GIFS.map((popularGif) => (
+            <li key={popularGif}>
+              <Link to={`/gif/${popularGif}`}>
+                Gifs de
+                {popularGif}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <Route path="/gif/:keyword" component={SearchResult} />
+      </section>
     </div>
   );
 }
