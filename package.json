@@ -2,8 +2,11 @@
   "name": "part3",
   "version": "0.1.0",
   "private": true,
-	"homepage": "https://axelcola.github.io/Gif-searcher",
+  "homepage": "https://axelcola.github.io/Gif-searcher",
   "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.5.3",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -15,8 +18,8 @@
     "wouter": "^2.8.0-alpha.2"
   },
   "scripts": {
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

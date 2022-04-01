@@ -1,30 +1,26 @@
 import React from "react";
 import Gif from "./Gif";
-import { useState, useEffect } from "react";
-import getGifs from "../getGifs";
+import Spinner from "./Spinner";
+import ListOfGifs from "./ListOfGifs";
+import { useGifs } from "../hooks/useGifs";
 
 export default function SearchResult({ params }) {
   const { keyword } = params;
-  const [loading, setLoading] = useState(false);
-  const [gifs, setGifs] = useState([]);
+  const { loading, gifs } = useGifs({ keyword });
+  // const [loading, setLoading] = useState(false);
+  // const [gifs, setGifs] = useState([]);
 
-  useEffect(
-    function () {
-      setLoading(true);
-      getGifs({ keyword }).then((gifs) => {
-        setGifs(gifs);
-        setLoading(false);
-      });
-    },
-    [keyword]
-  );
-  if (loading) return <i>cargando</i>;
+  // useEffect(
+  //   function () {
+  //     setLoading(true);
+  //     getGifs({ keyword }).then((gifs) => {
+  //       setGifs(gifs);
+  //       setLoading(false);
+  //     });
+  //   },
+  //   [keyword]
+  // );
+  // if (loading) return <Spinner />;
 
-  return (
-    <div>
-      {gifs.map(({ id, title, url }) => (
-        <Gif key={id} title={title} id={id} url={url} />
-      ))}
-    </div>
-  );
+  return loading ? <Spinner /> : <ListOfGifs gifs={gifs} />;
 }
