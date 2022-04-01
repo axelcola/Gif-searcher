@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import SearchResult from "./components/SearchResult";
 import { Link, Route, useLocation } from "wouter";
 
-const POPULAR_GIFS = ["diego", "ecuador", "rick", "morty"];
+const POPULAR_GIFS = [" Diego", " Ecuador", " Rick", " Morty"];
 
 function App() {
   const [keyword, setKeyword] = useState("");
