@@ -8,7 +8,7 @@ export function useGifs({ keyword }) {
   useEffect(
     function () {
       setLoading(true);
-      getGifs({ keyword: "rick" }).then((gifs) => {
+      getGifs({ keyword }).then((gifs) => {
         setGifs(gifs);
         setLoading(false);
       });
