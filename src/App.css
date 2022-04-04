@@ -1,5 +1,12 @@
+
+
+html, body{
+  font-size: 18px;
+}
+
 .App {
   text-align: center;
+	color: white
 }
 
 .App-content {
@@ -12,6 +19,16 @@
   font-size: calc(10px + 2vmin);
   padding: 16px;
   color: white;
+	
+}
+h1 {
+  max-width: 940px;
+  font-size: 2.5em;
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: auto;
+  text-align: center;
 }
 
 button {
@@ -60,4 +77,8 @@ a {
     --gridList-column: 300px;
     --gridList-rows: 210px;
   }
+}
+
+.textfield__label{
+	color: white !important;
 }

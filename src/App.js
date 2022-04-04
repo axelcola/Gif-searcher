@@ -1,9 +1,8 @@
 import "./App.css";
 import React, { useState } from "react";
 import SearchResult from "./components/SearchResult";
-import { Link, Route, useLocation } from "wouter";
-
-const POPULAR_GIFS = [" Diego", " Ecuador", " Rick", " Morty"];
+import { Route, useLocation } from "wouter";
+import { TextField } from "@mui/material";
 
 function App() {
   const [keyword, setKeyword] = useState("");
@@ -21,20 +20,18 @@ function App() {
   return (
     <div className="App">
       <section className="App-content">
-        <h1>hola</h1>
+        <h1>Gif searcher</h1>
+        <p>Type a keyword and press Enter</p>
         <form onSubmit={handleSubmit}>
-          <input onChange={handleChange} type="text" value={keyword} />
+          <TextField
+            onChange={handleChange}
+            value={keyword}
+            id="filled-basic"
+            label="Type here"
+            variant="filled"
+          />
+          {/* <input onChange={handleChange} type="text" value={keyword} /> */}
         </form>
-        <ul>
-          {POPULAR_GIFS.map((popularGif) => (
-            <p key={popularGif}>
-              <Link to={`/gif/${popularGif}`}>
-                Gifs de
-                {popularGif}
-              </Link>
-            </p>
-          ))}
-        </ul>
 
         <Route path="/gif/:keyword" component={SearchResult} />
       </section>
