@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <section className="App-content">
         <h1>Gif searcher</h1>
-        <p>Type a keyword and press Enter</p>
+        <p>Type your keyword and press Enter</p>
         <form onSubmit={handleSubmit}>
           <TextField
             onChange={handleChange}
@@ -29,11 +29,14 @@ function App() {
             id="filled-basic"
             label="Type here"
             variant="filled"
+            InputProps={{
+              style: { color: "white" },
+            }}
           />
-          {/* <input onChange={handleChange} type="text" value={keyword} /> */}
         </form>
-
-        <Route path="/gif/:keyword" component={SearchResult} />
+        <div className="gif-container">
+          <Route path="/gif/:keyword" component={SearchResult} />
+        </div>
       </section>
     </div>
   );
