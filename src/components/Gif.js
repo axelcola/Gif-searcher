@@ -5,8 +5,8 @@ import SingleGif from "./SingleGif";
 
 export default function Gif({ title, id, url }) {
   return (
-    <div>
-      <Link to={`/singlegif/${id}`} className="Gif">
+    <div className="Gif">
+      <Link to={`/singlegif/${id}`} className="Gif-link">
         <h4>{title}</h4>
         <img src={url} alt={title} />
       </Link>
