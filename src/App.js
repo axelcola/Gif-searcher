@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import SearchResult from "./components/SearchResult";
 import { Route, useLocation } from "wouter";
 import { TextField } from "@mui/material";
+import Detail from "./pages/Detail";
+import { GifsContextProvider } from "./context/GifsContext";
 
 function App() {
   const [keyword, setKeyword] = useState("");
@@ -22,20 +24,20 @@ function App() {
       <section className="App-content">
         <h1>Gif searcher</h1>
         <p>Type your keyword and press Enter</p>
-        <form onSubmit={handleSubmit}>
+        <form className="searcher" onSubmit={handleSubmit}>
           <TextField
             onChange={handleChange}
             value={keyword}
             id="filled-basic"
             label="Type here"
             variant="filled"
-            InputProps={{
-              style: { color: "white" },
-            }}
           />
         </form>
         <div className="gif-container">
-          <Route path="/gif/:keyword" component={SearchResult} />
+          <GifsContextProvider>
+            <Route path="/gif/:keyword" component={SearchResult} />
+            <Route component={Detail} path="/singlegif/:id" />
+          </GifsContextProvider>
         </div>
       </section>
     </div>
