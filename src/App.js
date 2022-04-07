@@ -36,6 +36,7 @@ function App() {
         <div className="gif-container">
           <GifsContextProvider>
             <Route path="/gif/:keyword" component={SearchResult} />
+            <Route path="/Gif-searcher" component={SearchResult} />
             <Route component={Detail} path="/singlegif/:id" />
           </GifsContextProvider>
         </div>
